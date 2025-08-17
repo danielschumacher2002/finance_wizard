@@ -1,6 +1,6 @@
-export default function Burgermenu({toggleMenu}) {
+export default function Burgermenu({ toggleMenu }) {
   return (
-    <button onClick={toggleMenu} className="">
+    <button onClick={toggleMenu} className="md:hidden">
       <svg
         className="w-10 h-10 fill-special"
         xmlns="http://www.w3.org/2000/svg"

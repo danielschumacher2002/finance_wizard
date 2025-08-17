@@ -8,13 +8,16 @@ export default function SideMenu({ menuOpen, toggleMenu }) {
   const menuItems = [
     { to: "/", label: "Home" },
     { to: "/about", label: "About" },
-    { to: "https://github.com/danielschumacher2002/finance_calculator", label: "Github" },
-    { to: "/*", label: "Feedback", disabled : true },
-    { to: "/legal", label: "Legal Notice" },
+    {
+      to: "https://github.com/danielschumacher2002/finance_calculator",
+      label: "Github",
+    },
+    { to: "/*", label: "Feedback", disabled: true },
+    { to: "/notice", label: "Legal Notice" },
     { to: "/privacy", label: "Privacy Policy" },
   ];
 
-    useEffect(() => {
+  useEffect(() => {
     if (menuOpen) {
       document.body.style.overflow = "hidden";
     } else {
@@ -26,7 +29,9 @@ export default function SideMenu({ menuOpen, toggleMenu }) {
   }, [menuOpen]);
 
   return (
-    <div className={`fixed left-0 top-0 h-full w-full z-10 p-5 bg-secondary transform transition-transform duration-300 ease-out  ${menuOpen ? "translate-x-0" : "-translate-x-full"}`}>
+    <div
+      className={`fixed left-0 top-0 h-full w-full z-10 p-5 bg-secondary transform transition-transform duration-300 ease-out  ${menuOpen ? "translate-x-0" : "-translate-x-full"}`}
+    >
       <CloseButton toggleMenu={toggleMenu} />
       <SideNav>
         {menuItems.map(({ to, label, disabled }, index) => (
@@ -36,4 +41,3 @@ export default function SideMenu({ menuOpen, toggleMenu }) {
     </div>
   );
 }
-
