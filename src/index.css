@@ -1,1 +1,15 @@
 @import "tailwindcss";
+
+@theme {
+  --color-primary: #121212;
+  --color-secondary: #1e1e1e;
+  --color-special: #a8946e;
+}
+
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("./assets/Inter-VariableFont_opsz,wght.ttf");
+}
