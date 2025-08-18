@@ -2,7 +2,7 @@ import ToolCard from "../components/ToolCard";
 import CardIcon from "../components/CardIcon";
 import PageLayout from "../Layout/PageLayout";
 
-export default function Homepage() {
+export default function HomePage() {
   const toolCardData = [
     {
       id: "1",

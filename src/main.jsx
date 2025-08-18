@@ -2,7 +2,6 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Homepage from "./pages/HomePage";
 import AboutPage from "./pages/AboutPage";
 import NoticePage from "./pages/NoticePage";
 import ImpressumPage from "./pages/ImpressumPage";
@@ -10,11 +9,12 @@ import PrivacyPage from "./pages/PrivacyPage";
 import DatenSchutzPage from "./pages/DatenSchutzPage";
 import NotFoundPage from "./pages/NotFoundPage";
 import InvestmentPage from "./pages/InvestmentPage";
+import HomePage from "./pages/HomePage";
 
 const router = createBrowserRouter([
   {
-    path: "/",
-    element: <Homepage></Homepage>,
+    path: "/finance_wizard",
+    element: <HomePage></HomePage>,
   },
   {
     path: "/about",
@@ -37,12 +37,12 @@ const router = createBrowserRouter([
     element: <DatenSchutzPage></DatenSchutzPage>,
   },
   {
-    path: "/*",
-    element: <NotFoundPage></NotFoundPage>, // NotFound.jsx
-  },
-  {
     path: "/investment",
-    element: <InvestmentPage></InvestmentPage>, // NotFound.jsx
+    element: <InvestmentPage></InvestmentPage>,
+  },
+      {
+    path: "*",
+    element: <NotFoundPage></NotFoundPage>, // NotFound.jsx
   },
 
   /*
