@@ -5,7 +5,7 @@ export default function SideNavItems({ index, to, disabled, label }) {
     <Link
       key={index}
       to={to}
-      className={`text-4xl text-special ${disabled ? "opacity-50" : ""}`}
+      className={`text-3xl text-special ${disabled ? "opacity-50" : ""}`}
     >
       {label}
     </Link>

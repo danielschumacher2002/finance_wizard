@@ -42,7 +42,7 @@ export default function NoticeText({ title, switchLink, blocks }) {
           return (
             <div
               key={idx}
-              className="text-gray-300 flex flex-col gap-1 text-2xl"
+              className="text-gray-300 flex flex-col gap-1 md:text-2xl"
             >
               {block.heading && (
                 <p className="font-semibold text-white/90">{block.heading}</p>
