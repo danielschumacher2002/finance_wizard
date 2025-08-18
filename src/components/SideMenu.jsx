@@ -17,27 +17,34 @@ export default function SideMenu({ menuOpen, toggleMenu }) {
     { to: "/privacy", label: "Privacy Policy" },
   ];
 
+  // optional: Scroll dahinter sperren
   useEffect(() => {
-    if (menuOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
-    return () => {
-      document.body.style.overflow = "";
-    };
+    document.body.classList.toggle("overflow-hidden", menuOpen);
+    return () => document.body.classList.remove("overflow-hidden");
   }, [menuOpen]);
 
   return (
     <div
-      className={`fixed left-0 top-0 h-full w-full z-10 p-5 bg-secondary transform transition-transform duration-300 ease-out  ${menuOpen ? "translate-x-0" : "-translate-x-full"}`}
+      onClick={toggleMenu}
+      className={`fixed inset-0 z-20 bg-secondary/50 transition-opacity
+    ${menuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}
     >
-      <CloseButton toggleMenu={toggleMenu} />
-      <SideNav>
-        {menuItems.map(({ to, label, disabled }, index) => (
-          <SideNavItems key={index} to={to} label={label} disabled={disabled} />
-        ))}
-      </SideNav>
+      <div
+        className={`fixed left-0 top-0 h-full w-4/6 z-30 p-5 bg-secondary transform transition-transform duration-300 ease-out  ${menuOpen ? "translate-x-0" : "-translate-x-full"}`}
+        onClick={(e) => e.stopPropagation()}
+      >
+        <CloseButton toggleMenu={toggleMenu} />
+        <SideNav>
+          {menuItems.map(({ to, label, disabled }, index) => (
+            <SideNavItems
+              key={index}
+              to={to}
+              label={label}
+              disabled={disabled}
+            />
+          ))}
+        </SideNav>
+      </div>
     </div>
   );
 }

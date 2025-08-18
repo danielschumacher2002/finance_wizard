@@ -11,14 +11,15 @@ export default function ToolCard({
   return (
     <Link
       to={to}
-      className={`flex flex-col gap-2 min-h-40 rounded-xl border border-white/10 bg-[#181818] p-4 ${disabled ? "opacity-50 cursor-not-allowed" : "opacity-100"} md:justify-center md:items-center md:hover:brightness-125 md:gap-5`}
+      className={`h-30 rounded-xl border border-white/10 bg-[#181818] ${disabled ? "opacity-50 cursor-not-allowed" : "opacity-100"} md:hover:brightness-125 md:h-40 xl:h-50`}
     >
-      <div className="flex items-center gap-3 md:gap-5">
+      <div className="flex flex-row gap-2  items-center pl-8 h-full pr-4">
         <ToolCardIcon svg={children} />
-        <ToolCardTitle title={title} />
+        <div className="flex flex-col gap-1">
+          <ToolCardTitle title={title} />
+          <ToolCardDescription description={desc} />
+        </div>
       </div>
-      <ToolCardDescription description={desc} />
-      <ToolCardFooter disabled={disabled}></ToolCardFooter>
     </Link>
   );
 }
@@ -29,13 +30,15 @@ function ToolCardIcon({ svg }) {
 
 function ToolCardTitle({ title }) {
   return (
-    <h3 className="font-semibold text-white text-xl md:text-3xl">{title}</h3>
+    <h3 className="font-semibold text-white text-sm md:text-md xl:text-2xl">
+      {title}
+    </h3>
   );
 }
 
 function ToolCardDescription({ description }) {
   return (
-    <p className="mt-3 text-md text-neutral-300 md:text-2xl text-center">
+    <p className="text-[12px] text-neutral-300 md:text-sm  xl:text-md">
       {description}
     </p>
   );

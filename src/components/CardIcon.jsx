@@ -1,7 +1,7 @@
 export default function CardIcon({ children }) {
   return (
     <svg
-      className="w-8 h-8 fill-special md:size-14"
+      className="w-10 h-10 fill-special md:size-12 xl:size-14"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 640 640"
     >

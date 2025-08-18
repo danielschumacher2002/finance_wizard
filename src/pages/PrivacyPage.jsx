@@ -13,17 +13,17 @@ export default function PrivacyPage() {
 function PrivacyPolicy() {
   return (
     <div className="m-auto max-w-3xl bg-secondary/30  text-white p-10 flex flex-col gap-8 md:text-xl">
-      <h1 className="text-special text-4xl font-extrabold border-b border-white/10 pb-4">
+      <h1 className=" text-center text-special text-4xl font-extrabold border-b border-white/10 pb-4">
         Privacy Policy
       </h1>
 
-      <p className="text-sm text-gray-400 md:text-lg">
+      <p className=" text-center text-sm text-gray-400 md:text-lg">
         This page explains how personal data is handled when you use this
         website. It is a simple, non-commercial project with no backend.
       </p>
 
       <Link
-        className="inline-block text-lg underline text-special md:text-xl"
+        className="border-b border-white/10 pb-4 text-center inline-block text-lg underline text-special md:text-xl"
         to="/datenschutz"
       >
         For the German version click here

@@ -10,6 +10,7 @@ import DatenSchutzPage from "./pages/DatenSchutzPage";
 import NotFoundPage from "./pages/NotFoundPage";
 import InvestmentPage from "./pages/InvestmentPage";
 import HomePage from "./pages/HomePage";
+import InflationPage from "./pages/InflationPage";
 
 const router = createBrowserRouter([
   {
@@ -40,7 +41,11 @@ const router = createBrowserRouter([
     path: "/investment",
     element: <InvestmentPage></InvestmentPage>,
   },
-      {
+    {
+    path: "/inflation",
+    element: <InflationPage></InflationPage>,
+  },
+  {
     path: "*",
     element: <NotFoundPage></NotFoundPage>, // NotFound.jsx
   },

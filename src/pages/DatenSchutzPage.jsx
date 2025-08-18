@@ -13,18 +13,18 @@ export default function DatenSchutzPage() {
 function Datenschutz() {
   return (
     <div className="m-auto max-w-3xl text-white p-10 flex flex-col gap-8 md:text-xl">
-      <h1 className="text-3xl font-extrabold border-b border-white/10 pb-4 text-special">
+      <h1 className="text-3xl text-center font-extrabold border-b border-white/10 pb-4 text-special">
         Datenschutzerklärung
       </h1>
 
-      <p className="text-sm text-gray-400 md:text-lg">
+      <p className="text-sm text-center text-gray-400 md:text-lg">
         Diese Seite erklärt, wie personenbezogene Daten beim Besuch dieser
         Website verarbeitet werden. Es handelt sich um ein einfaches,
         nicht-kommerzielles Projekt ohne Backend.
       </p>
 
       <Link
-        className="inline-block text-lg underline text-special md:text-xl"
+        className="border-b border-white/10 pb-4 text-center inline-block text-lg underline text-special md:text-xl"
         to="/privacy"
       >
         Für die englische Version klicken Sie hier
