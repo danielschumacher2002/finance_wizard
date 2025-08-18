@@ -26,14 +26,14 @@ export default function InvestmentPage() {
 
   return (
     <PageLayout>
-      <div className="text-white max-w-3xl m-auto flex flex-col gap-8 px-4">
-        <h1 className="text-2xl font-bold text-center">Compound Interest</h1>
-        <p className="text-gray-400 text-center">
+      <div className="text-white my-auto flex flex-col gap-8 px-4 items-center md:gap-12">
+        <h1 className="text-2xl font-bold text-center md:text-4xl">Compound Interest</h1>
+        <span className="text-gray-400 text-center md:text-3xl">
           Calculate the final value and profit of your investment.
-        </p>
+        </span>
 
         {/* Eingaben */}
-        <div className="space-y-4 max-w-md">
+        <div className="space-y-4 max-w-md md:space-y-7">
           <Input
             value={principal}
             setCallback={setPrincipal}
@@ -49,7 +49,7 @@ export default function InvestmentPage() {
         </div>
 
         {result && (
-          <div className="space-y-2 text-lg">
+          <div className="space-y-2 text-lg md:text-3xl">
             <p>
               <span className="text-gray-400">Final Value: </span>
               {result.finalValue.toFixed(2)}
@@ -72,7 +72,7 @@ function Input({ value, setCallback, placeholder }) {
       placeholder={placeholder}
       value={value}
       onChange={(e) => setCallback(e.target.value)}
-      className="w-full px-3 py-2 rounded bg-[#2a2a2a] focus:outline-none"
+      className="w-full px-3 py-2 rounded bg-[#2a2a2a] focus:outline-none md:py-4 md:text-xl"
     />
   );
 }
