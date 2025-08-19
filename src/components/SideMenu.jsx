@@ -6,15 +6,15 @@ import SideNavItems from "./SideNavItems";
 
 export default function SideMenu({ menuOpen, toggleMenu }) {
   const menuItems = [
-    { to: "/", label: "Home" },
-    { to: "/about", label: "About" },
+    { to: "/finance_wizard/", label: "Home" },
+    { to: "/finance_wizard/about", label: "About" },
     {
       to: "https://github.com/danielschumacher2002/finance_calculator",
       label: "Github",
     },
-    { to: "/*", label: "Feedback", disabled: true },
-    { to: "/notice", label: "Legal Notice" },
-    { to: "/privacy", label: "Privacy Policy" },
+    { to: "/finance_wizard/*", label: "Feedback", disabled: true },
+    { to: "/finance_wizard/notice", label: "Legal Notice" },
+    { to: "/finance_wizard/privacy", label: "Privacy Policy" },
   ];
 
   // optional: Scroll dahinter sperren

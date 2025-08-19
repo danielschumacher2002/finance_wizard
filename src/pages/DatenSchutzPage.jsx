@@ -25,7 +25,7 @@ function Datenschutz() {
 
       <Link
         className="border-b border-white/10 pb-4 text-center inline-block text-lg underline text-special md:text-xl"
-        to="/privacy"
+        to="/finance_wizard/privacy"
       >
         Für die englische Version klicken Sie hier
       </Link>

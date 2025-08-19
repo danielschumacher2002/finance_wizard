@@ -5,7 +5,7 @@ export default function NoticePage() {
   const legalNoticeContent = {
     title: "Legal Notice",
     switchLink: {
-      to: "/impressum",
+      to: "/finance_wizard/impressum",
       label: "For the German version click here",
     },
     blocks: [

@@ -14,39 +14,39 @@ import InflationPage from "./pages/InflationPage";
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "/finance_wizard",
     element: <HomePage></HomePage>,
   },
   {
-    path: "/about",
+    path: "/finance_wizard/about",
     element: <AboutPage></AboutPage>,
   },
   {
-    path: "/notice",
+    path: "/finance_wizard/notice",
     element: <NoticePage></NoticePage>,
   },
   {
-    path: "/impressum",
+    path: "/finance_wizard/impressum",
     element: <ImpressumPage></ImpressumPage>,
   },
   {
-    path: "/privacy",
+    path: "/finance_wizard/privacy",
     element: <PrivacyPage />,
   },
   {
-    path: "/datenschutz",
+    path: "/finance_wizard/datenschutz",
     element: <DatenSchutzPage></DatenSchutzPage>,
   },
   {
-    path: "/investment",
+    path: "/finance_wizard/investment",
     element: <InvestmentPage></InvestmentPage>,
   },
   {
-    path: "/inflation",
+    path: "/finance_wizard/inflation",
     element: <InflationPage></InflationPage>,
   },
   {
-    path: "*",
+    path: "/finance_wizard/*",
     element: <NotFoundPage></NotFoundPage>, // NotFound.jsx
   },
 

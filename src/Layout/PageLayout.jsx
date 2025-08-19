@@ -24,21 +24,21 @@ export default function PageLayout({ children }) {
         <Burgermenu toggleMenu={toggleMenu}></Burgermenu>
         <MainTitle></MainTitle>
         <NavBar>
-          <NavItem text={`Home`} path={"/"}></NavItem>
-          <NavItem text={`About`} path={"/about"}></NavItem>
+          <NavItem text={`Home`} path={"/finance_wizard/"}></NavItem>
+          <NavItem text={`About`} path={"/finance_wizard/about"}></NavItem>
           <NavItem
             text={`Github`}
             path={"https://github.com/danielschumacher2002/finance_calculator"}
           ></NavItem>
-          <NavItem text={`Feedback`} path={"/*"} disabled={true}></NavItem>
+          <NavItem text={`Feedback`} path={"/finance_wizard/*"} disabled={true}></NavItem>
         </NavBar>
       </Header>
       <SideMenu menuOpen={menuOpen} toggleMenu={toggleMenu} />
       <InnerPageLayout>{children}</InnerPageLayout>
       <Footer>
         <FooterNav>
-          <FooterLinkItems text={"Legal Notice"} path={"/notice"} />
-          <FooterLinkItems text={"Data Privacy"} path={"/privacy"} />
+          <FooterLinkItems text={"Legal Notice"} path={"/finance_wizard/notice"} />
+          <FooterLinkItems text={"Data Privacy"} path={"/finance_wizard/privacy"} />
         </FooterNav>
         <Notice></Notice>
       </Footer>

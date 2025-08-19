@@ -10,7 +10,7 @@ export default function NotFoundPage() {
           <p className="text-gray-400 md:text-4xl">Page not found</p>
 
           <Link
-            to="/finance_wizard"
+            to="/finance_wizard/"
             className="inline-block mt-2 px-5 py-2.5 rounded-lg bg-special font-medium hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-white/20 md:w-sm md:h-30 md:items-center md:flex md:justify-center md:text-4xl"
           >
             Go Home

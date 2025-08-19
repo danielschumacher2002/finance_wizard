@@ -24,7 +24,7 @@ function PrivacyPolicy() {
 
       <Link
         className="border-b border-white/10 pb-4 text-center inline-block text-lg underline text-special md:text-xl"
-        to="/datenschutz"
+        to="/finance_wizard/datenschutz"
       >
         For the German version click here
       </Link>

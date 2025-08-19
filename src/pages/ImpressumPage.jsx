@@ -4,7 +4,7 @@ import NoticeText from "../components/NoticeText";
 export default function ImpressumPage() {
   const legalNoticeContent = {
     title: "Impressum",
-    switchLink: { to: "/notice", label: "For the English version click here" },
+    switchLink: { to: "/finance_wizard/notice", label: "For the English version click here" },
     blocks: [
       {
         type: "lines",
