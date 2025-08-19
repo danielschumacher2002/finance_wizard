@@ -24,7 +24,7 @@ export default function PageLayout({ children }) {
         <Burgermenu toggleMenu={toggleMenu}></Burgermenu>
         <MainTitle></MainTitle>
         <NavBar>
-          <NavItem text={`Home`} path={"/finance_wizard"}></NavItem>
+          <NavItem text={`Home`} path={"/"}></NavItem>
           <NavItem text={`About`} path={"/about"}></NavItem>
           <NavItem
             text={`Github`}

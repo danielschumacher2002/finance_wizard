@@ -14,7 +14,7 @@ import InflationPage from "./pages/InflationPage";
 
 const router = createBrowserRouter([
   {
-    path: "/finance_wizard",
+    path: "/",
     element: <HomePage></HomePage>,
   },
   {

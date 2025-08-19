@@ -6,7 +6,7 @@ import SideNavItems from "./SideNavItems";
 
 export default function SideMenu({ menuOpen, toggleMenu }) {
   const menuItems = [
-    { to: "/finance_wizard", label: "Home" },
+    { to: "/", label: "Home" },
     { to: "/about", label: "About" },
     {
       to: "https://github.com/danielschumacher2002/finance_calculator",
