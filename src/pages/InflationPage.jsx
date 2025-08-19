@@ -1,6 +1,7 @@
 import { useState } from "react";
 import PageLayout from "../Layout/PageLayout";
 import CalculateButtton from "../components/CalculateButton";
+import { formatCurrency } from "../utiliys/currency";
 
 export default function InflationPage() {
   const [amount, setAmount] = useState("");
@@ -31,8 +32,10 @@ export default function InflationPage() {
     const n = Math.round(t);
     const factor = Math.pow(1 + r, n);
 
-    const presentValue = r === 0 ? A : A / factor;
-    const loss = A - presentValue;
+    const presentValue = formatCurrency(r === 0 ? A : A / factor);
+    const loss = formatCurrency(A - presentValue);
+
+    
 
     setResult({
       presentValue,

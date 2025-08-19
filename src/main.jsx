@@ -41,7 +41,7 @@ const router = createBrowserRouter([
     path: "/investment",
     element: <InvestmentPage></InvestmentPage>,
   },
-    {
+  {
     path: "/inflation",
     element: <InflationPage></InflationPage>,
   },

@@ -1,5 +1,5 @@
-## 🧙‍♂️ Finance Wizard
+# 🧙‍♂️ Finance Wizard
 
-# Tech Stack:
+## Tech Stack:
 
 React ⚛️ and Tailwind ❤️

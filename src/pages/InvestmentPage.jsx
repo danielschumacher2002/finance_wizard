@@ -1,6 +1,7 @@
 import { useState } from "react";
 import PageLayout from "../Layout/PageLayout";
 import CalculateButtton from "../components/CalculateButton";
+import { formatCurrency } from "../utiliys/currency";
 
 export default function InvestmentPage() {
   const [principal, setPrincipal] = useState("");
@@ -10,37 +11,91 @@ export default function InvestmentPage() {
   const [monthly, setMonthly] = useState("");
 
   const calculate = () => {
-    const P = parseFloat(principal);
-    const r = parseFloat(rate) / 100;
-    const t = parseFloat(years);
-    const m = parseFloat(monthly);
+  const P = parseFloat(principal);
+  const rPct = parseFloat(rate);        
+  const t = parseInt(years, 10);
+  const m = monthly === "" ? 0 : parseFloat(monthly); 
 
-    if ([P, r, t, m].some((x) => Number.isNaN(x))) {
-      setResult(null);
-      return;
-    }
-    if (t < 0) {
-      setResult(null);
-      return;
-    }
+  if ([P, rPct, t].some((x) => Number.isNaN(x)) || t < 0 || P < 0 || m < 0) {
+    setResult(null);
+    return;
+  }
 
-    const n = Math.round(t * 12);
-    const i = r / 12;
 
-    const fvPrincipal = i === 0 ? P : P * Math.pow(1 + i, n);
+  const res = compoundInterest(P, t, m, rPct / 100);
 
-    const fvContrib = i === 0 ? m * n : m * ((Math.pow(1 + i, n) - 1) / i);
 
-    const finalValue = fvPrincipal + fvContrib;
-    const totalContributed = P + m * n;
-    const profit = finalValue - totalContributed;
+  setResult({
+    profit: res.totalInterest,            
+    finalValue: res.finalTotal,           
+    totalContributed: res.totalContributed,
+    data: res.data,                      
+  });
 
-    setResult({ finalValue, profit, totalContributed });
+  console.log(res.data)
+};
+
+function compoundInterest(principal, years, monthlyDeposit, yearlyRate) {
+  const data = [];
+  let total = principal;
+  let totalContributed = principal;
+  let totalInterest = 0;
+
+  for (let year = 1; year <= years; year++) {
+    const { totalEnd, interestEarned, contributed } =
+      accumulate12Months(total, yearlyRate, monthlyDeposit);
+
+    totalContributed += contributed;
+    totalInterest += interestEarned;
+    total = totalEnd;
+
+    data.push({
+      year,
+      contributed: formatCurrency(totalContributed),
+      interest: formatCurrency(totalInterest),
+      total: formatCurrency(total),
+    });
+  }
+
+  return {
+    data,
+    finalTotal: formatCurrency(total),
+    totalContributed: formatCurrency(totalContributed),
+    totalInterest: formatCurrency(totalInterest),
   };
+}
+
+
+
+
+function accumulate12Months(initial, yearlyRate, monthlyDeposit) {
+  const months = 12;
+
+  const i = Math.pow(1 + yearlyRate, 1 / 12) - 1;
+
+  let totalEnd, contributions;
+
+  if (i === 0) {
+    totalEnd = initial + monthlyDeposit * months;
+  } else {
+    const growth = Math.pow(1 + i, months);
+    const depositsFV = monthlyDeposit * ((growth - 1) / i);
+    totalEnd = initial * growth + depositsFV;
+  }
+
+  contributions = monthlyDeposit * months;
+  const interestEarned = totalEnd - (initial + contributions);
+
+  return {
+    totalEnd,
+    interestEarned,
+    contributed: contributions
+  };
+}
 
   return (
     <PageLayout>
-      <div className="text-white my-auto  min-w-1/2 ">
+      <div className="text-white my-10  min-w-1/2 ">
         <div className="max-w-xl mx-auto flex flex-col gap-8 px-4 items-center md:gap-14">
             <h1 className="text-special text-2xl font-bold text-center md:text-4xl">
               Compound Interest
@@ -74,16 +129,16 @@ export default function InvestmentPage() {
               <div className="flex justify-between">
                 <span className="text-special">Profit: </span>
                 <span className="text-special">
-                {result.profit.toFixed(2)}
+                {result.profit}
                 </span>
               </div>
               <div className="flex justify-between">
                 <span className="text-gray-400">Final Value: </span>
-                {result.finalValue.toFixed(2)}
+                {result.finalValue}
               </div>
               <div className="flex justify-between">
                 <span className="text-gray-400">Contributed: </span>
-                {result.totalContributed.toFixed(2)}
+                {result.totalContributed}
               </div>
             </div>
           )}
@@ -104,3 +159,4 @@ function Input({ value, setCallback, placeholder }) {
     />
   );
 }
+
