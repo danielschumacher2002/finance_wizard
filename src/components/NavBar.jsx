@@ -1,7 +1,8 @@
+// Links als Children
 export default function NavBar({ children }) {
   return (
-    <nav className="hidden md:block">
-      <ul className="flex flex-row gap-x-7">{children}</ul>
+    <nav className="">
+      <ul className="flex flex-row gap-9">{children}</ul>
     </nav>
   );
 }

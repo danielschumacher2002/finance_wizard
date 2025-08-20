@@ -1,55 +1,33 @@
-import { Link } from "react-router-dom";
-import LinkArrow from "./LinkArrow";
+import React from "react";
 
-export default function ToolCard({
-  title,
-  desc,
-  to,
-  children,
-  disabled = false,
-}) {
+export function ToolCard({ path, color, title, desc }) {
   return (
-    <Link
-      to={to}
-      className={`h-30 rounded-xl border border-white/10 bg-[#181818] ${disabled ? "opacity-50 cursor-not-allowed" : "opacity-100"} md:hover:brightness-125 md:h-40 xl:h-50`}
+    /* ToolCards nehmen volle breite grid parent muss regeln*/
+    <div
+      className="flex gap-2 sm:gap-3
+                 pl-8 py-2
+                 h-25 sm:h-30 lg:h-35
+                 rounded-lg
+                 hover:bg-[#282828]"
     >
-      <div className="flex flex-row gap-2  items-center pl-8 h-full pr-4">
-        <ToolCardIcon svg={children} />
-        <div className="flex flex-col gap-1">
-          <ToolCardTitle title={title} />
-          <ToolCardDescription description={desc} />
-        </div>
+      <div className="flex items-center">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 640 640"
+          fill={color}
+          className={`size-11 sm:size-13 lg:size-15`}
+        >
+          <path d={path}></path>
+        </svg>
       </div>
-    </Link>
-  );
-}
-
-function ToolCardIcon({ svg }) {
-  return <span className={`text-special`}>{svg}</span>;
-}
-
-function ToolCardTitle({ title }) {
-  return (
-    <h3 className="font-semibold text-white text-sm md:text-md xl:text-2xl">
-      {title}
-    </h3>
-  );
-}
-
-function ToolCardDescription({ description }) {
-  return (
-    <p className="text-[12px] text-neutral-300 md:text-sm  xl:text-md">
-      {description}
-    </p>
-  );
-}
-
-function ToolCardFooter({ disabled }) {
-  const text = disabled ? "Closed" : "Open";
-  return (
-    <span className={`mt-2 flex items-center gap-1 text-md text-special`}>
-      {text}
-      <LinkArrow></LinkArrow>
-    </span>
+      <div className="flex flex-col justify-center gap-1 sm:gap-2">
+        <p className="text-white/80 font-[Inter] font-bold text-md sm:text-lg lg:text-xl">
+          {title}
+        </p>
+        <p className="text-white/40 font-[Inter] text-sm sm:text-base lg:text-md">
+          {desc}
+        </p>
+      </div>
+    </div>
   );
 }

@@ -1,49 +1,42 @@
-import { Link } from "react-router-dom";
-import SideNav from "./SideNav";
-import CloseButton from "./CloseButton";
-import { useEffect } from "react";
-import SideNavItems from "./SideNavItems";
+import SideMenuLink from "./SideMenuLink";
 
-export default function SideMenu({ menuOpen, toggleMenu }) {
-  const menuItems = [
-    { to: "/finance_wizard/", label: "Home" },
-    { to: "/finance_wizard/about", label: "About" },
+export default function SideMenu({ isOpen }) {
+  const linkData = [
     {
-      to: "https://github.com/danielschumacher2002/finance_calculator",
-      label: "Github",
+      text: "Coming Soon",
+      to: "/",
     },
-    { to: "/finance_wizard/*", label: "Feedback", disabled: true },
-    { to: "/finance_wizard/notice", label: "Legal Notice" },
-    { to: "/finance_wizard/privacy", label: "Privacy Policy" },
+    {
+      text: "Coming Soon",
+      to: "/",
+    },
+    {
+      text: "Legal Notice",
+      to: "/legal",
+    },
+    {
+      text: "Data Privacy",
+      to: "/privacy",
+    },
   ];
 
-  // optional: Scroll dahinter sperren
-  useEffect(() => {
-    document.body.classList.toggle("overflow-hidden", menuOpen);
-    return () => document.body.classList.remove("overflow-hidden");
-  }, [menuOpen]);
-
   return (
+    // Ganzes Side Menu div
     <div
-      onClick={toggleMenu}
-      className={`fixed inset-0 z-20 bg-secondary/50 transition-opacity
-    ${menuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}
+      className={`bg-secondary
+                         fixed top-0 left-0 bottom-0 z-10
+                         ${isOpen ? "" : "-translate-x-full"}
+                         transition-transform ease-in-out duration-300
+                         w-1/2`}
     >
+      {/* Div fuer die gruppierten links*/}
       <div
-        className={`fixed left-0 top-0 h-full w-4/6 z-30 p-5 bg-secondary transform transition-transform duration-300 ease-out  ${menuOpen ? "translate-x-0" : "-translate-x-full"}`}
-        onClick={(e) => e.stopPropagation()}
+        className="flex flex-col gap-10
+                        pl-6 pt-10"
       >
-        <CloseButton toggleMenu={toggleMenu} />
-        <SideNav>
-          {menuItems.map(({ to, label, disabled }, index) => (
-            <SideNavItems
-              key={index}
-              to={to}
-              label={label}
-              disabled={disabled}
-            />
-          ))}
-        </SideNav>
+        {linkData.map((data) => {
+          return <SideMenuLink text={data.text} to={data.to}></SideMenuLink>;
+        })}
       </div>
     </div>
   );
