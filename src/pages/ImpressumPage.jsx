@@ -51,7 +51,7 @@ export default function ImpressumPage() {
             {/* Sprachwechsel zurück zur EN-Seite */}
             <Link
               to="/legal"
-              className="text-primary underline font-[Inter] font-bold"
+              className="text-primary text-md font-[Inter] font-bold tracking-wide underline sm:text-lg"
             >
               Click here for the English version
             </Link>
