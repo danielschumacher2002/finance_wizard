@@ -10,6 +10,8 @@ import LegalPrivacySectionHeadLine from "../components/LegalPrivacySectionHeadLi
 import { LegalPrivacySection } from "../components/LegalPrivacySection";
 import { Link } from "react-router-dom";
 import { idIconPath } from "../assets/data/iconPath";
+import PageBanner from "../components/PageBanner";
+import LegalPrivacyImportantLink from "../components/LegalPrivacyImportantLink";
 
 export default function ImpressumPage() {
   const [menuOpen, toggleSideMenu] = useSideMenu();
@@ -21,40 +23,18 @@ export default function ImpressumPage() {
       <SideMenu isOpen={menuOpen} />
       <Overlay isActive={menuOpen} toggleFunc={toggleSideMenu} />
       <MainLayoutInner>
-        <div
-          className="bg-secondary rounded-sm
-                                flex items-center justify-center"
-        >
-          <svg
-            className="fill-primary
-                                    size-1/4
-                                    m-2"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 640 640"
-          >
-            {/*Font Awesome Free v7.0.0 by @fontawesome - https://fontawesome.com
-                            License - https://fontawesome.com/license/free Copyright 2025
-                            Fonticons, Inc.*/}
-            <path d={idIconPath} />
-          </svg>
-        </div>
+        <PageBanner path={idIconPath}></PageBanner>
 
         <div className="bg-secondary rounded-sm flex flex-col gap-8 sm:gap-10 p-4 sm:p-6">
           <LegalPrivacySection>
             <h1 className="text-primary text-2xl font-[Inter] font-bold tracking-wide sm:text-3xl">
               Impressum
             </h1>
-            <p className="text-white/80 text-md font-[Inter] font-bold tracking-wide sm:text-lg">
-              Angaben gemäß § 5 DDG
-            </p>
 
-            {/* Sprachwechsel zurück zur EN-Seite */}
-            <Link
-              to="/legal"
-              className="text-primary text-md font-[Inter] font-bold tracking-wide underline sm:text-lg"
-            >
-              Click here for the English version
-            </Link>
+            <LegalPrivacyImportantLink
+              to={"/legal"}
+              text={"Click here for the English version"}
+            ></LegalPrivacyImportantLink>
           </LegalPrivacySection>
 
           <LegalPrivacySection>
@@ -71,12 +51,32 @@ export default function ImpressumPage() {
           <LegalPrivacySection>
             <LegalPrivacySectionHeadLine>Kontakt</LegalPrivacySectionHeadLine>
             <div>
+              <LegalParagraph>Telefon: +49 17647230184</LegalParagraph>
               <LegalParagraph>
                 E-Mail: danielschumacher2025@proton.me
               </LegalParagraph>
-              <LegalParagraph>Telefon: +49 17647230184</LegalParagraph>
             </div>
           </LegalPrivacySection>
+
+          <LegalPrivacySection>
+            <LegalPrivacySectionHeadLine>
+              Redaktionell verantwortlich
+            </LegalPrivacySectionHeadLine>
+            <div>
+              <LegalParagraph>Daniel Schumacher</LegalParagraph>
+              <LegalParagraph>Am Rehwechsel 4</LegalParagraph>
+              <LegalParagraph>73577 Ruppertshofen</LegalParagraph>
+            </div>
+          </LegalPrivacySection>
+
+          <LegalParagraph>
+            <div>Quelle:</div>
+
+            <LegalPrivacyImportantLink
+              to={"https://www.e-recht24.de/"}
+              text={"https://www.e-recht24.de"}
+            ></LegalPrivacyImportantLink>
+          </LegalParagraph>
 
           <LegalPrivacySection>
             <LegalPrivacySectionHeadLine>

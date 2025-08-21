@@ -11,6 +11,8 @@ import { Link } from "react-router-dom";
 import { LegalParagraph } from "../components/LegalParagraph";
 import LegalPrivacySectionHeadLine from "../components/LegalPrivacySectionHeadLine";
 import { LegalPrivacySection } from "../components/LegalPrivacySection";
+import PageBanner from "../components/PageBanner";
+import LegalPrivacyImportantLink from "../components/LegalPrivacyImportantLink";
 
 export default function LegalPage() {
   const [menuOpen, toggleSideMenu] = useSideMenu();
@@ -22,23 +24,7 @@ export default function LegalPage() {
       <SideMenu isOpen={menuOpen}></SideMenu>
       <Overlay isActive={menuOpen} toggleFunc={toggleSideMenu}></Overlay>
       <MainLayoutInner>
-        <div
-          className="bg-secondary rounded-sm
-                        flex items-center justify-center"
-        >
-          <svg
-            className="fill-primary
-                            size-1/4
-                            m-2"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 640 640"
-          >
-            {/*Font Awesome Free v7.0.0 by @fontawesome - https://fontawesome.com
-                    License - https://fontawesome.com/license/free Copyright 2025
-                    Fonticons, Inc.*/}
-            <path d={idIconPath} />
-          </svg>
-        </div>
+        <PageBanner path={idIconPath}></PageBanner>
 
         <div
           className="bg-secondary rounded-sm
@@ -50,17 +36,10 @@ export default function LegalPage() {
               Legal Notice
             </h1>
 
-            <p className="text-white/80 text-md font-[Inter] font-bold tracking-wide sm:text-lg">
-              Information in accordance with Section 5 DDG (Digital Services
-              Act)
-            </p>
-
-            <Link
+            <LegalPrivacyImportantLink
               to={"/impressum"}
-              className="text-primary text-md font-[Inter] font-bold tracking-wide underline sm:text-lg"
-            >
-              Hier klicken für die deutsche Version
-            </Link>
+              text={"Hier klicken für die deutsche Version"}
+            ></LegalPrivacyImportantLink>
           </LegalPrivacySection>
 
           <LegalPrivacySection>
@@ -79,12 +58,32 @@ export default function LegalPage() {
             <LegalPrivacySectionHeadLine>Contact</LegalPrivacySectionHeadLine>
 
             <div>
-              <LegalParagraph>
-                E-Mail: danielschumacher2025@proton.me{" "}
-              </LegalParagraph>
               <LegalParagraph>Telefon: +49 17647230184</LegalParagraph>
+              <LegalParagraph>
+                E-Mail: danielschumacher2025@proton.me
+              </LegalParagraph>
             </div>
           </LegalPrivacySection>
+
+          <LegalPrivacySection>
+            <LegalPrivacySectionHeadLine>
+              Editorial responsibility
+            </LegalPrivacySectionHeadLine>
+            <div>
+              <LegalParagraph>Daniel Schumacher</LegalParagraph>
+              <LegalParagraph>Am Rehwechsel 4</LegalParagraph>
+              <LegalParagraph>73577 Ruppertshofen</LegalParagraph>
+            </div>
+          </LegalPrivacySection>
+
+          <LegalParagraph>
+            <div>Source:</div>
+
+            <LegalPrivacyImportantLink
+              to={"https://www.e-recht24.de/"}
+              text={"https://www.e-recht24.de"}
+            ></LegalPrivacyImportantLink>
+          </LegalParagraph>
 
           <LegalPrivacySection>
             <LegalPrivacySectionHeadLine>

@@ -10,9 +10,30 @@ import { Link } from "react-router-dom";
 import { LegalParagraph } from "../components/LegalParagraph";
 import LegalPrivacySectionHeadLine from "../components/LegalPrivacySectionHeadLine";
 import { LegalPrivacySection } from "../components/LegalPrivacySection";
+import { LegalPrivacySectionSubHeadLine } from "../components/LegalPrivacySectionSubHeadLine";
+import { LegalPrivacySectionSubSubHeadLine } from "../components/LegalPrivacySectionSubSubHeadLine";
+import PageBanner from "../components/PageBanner";
+import LegalPrivacyImportantLink from "../components/LegalPrivacyImportantLink";
+import LegalPrivacyList from "../components/LegalPrivacyList";
 
 export default function DataSchutzPage() {
   const [menuOpen, toggleSideMenu] = useSideMenu();
+
+  const einschränkungVerarbeitung = [
+    "Wenn Sie die Richtigkeit Ihrer bei uns gespeicherten personenbezogenen Daten bestreiten, benötigen wir n der Regel Zeit, um dies zu überprüfen. Für die Dauer der Prüfung haben Sie das Recht, die Einschränkung der Verarbeitung Ihrer personenbezogenen Daten zu verlangen.",
+    "Wenn die Verarbeitung Ihrer personenbezogenen Daten unrechtmäßig geschah/geschieht, können Sie statt der Löschung die Einschränkung der Datenverarbeitung verlangen.",
+    "Wenn wir Ihre personenbezogenen Daten nicht mehr benötigen, Sie sie jedoch zur Ausübung, Verteidigung oder Geltendmachung von Rechtsansprüchen benötigen, haben Sie das Recht, statt der Löschung die Einschränkung der Verarbeitung Ihrer personenbezogenen Daten zu verlangen.",
+    "Wenn Sie einen Widerspruch nach Art. 21 Abs. 1 DSGVO eingelegt haben, muss eine Abwägung zwischen Ihren und unseren Interessen vorgenommen werden. Solange noch nicht feststeht, wessen Interessen überwiegen, haben Sie das Recht, die Einschränkung der Verarbeitung Ihrer personenbezogenen Daten zu verlangen",
+  ];
+
+  const serverInfoDeutsch = [
+    "Browsertyp und Browserverion",
+    "verwendetes Betriebssystem",
+    "Referrer URL",
+    "Hostname des zugreifenden Rechners",
+    "Uhrzeit der Serveranfrage",
+    "IP-Adresse",
+  ];
 
   return (
     <MainLayout>
@@ -21,23 +42,7 @@ export default function DataSchutzPage() {
       <SideMenu isOpen={menuOpen}></SideMenu>
       <Overlay isActive={menuOpen} toggleFunc={toggleSideMenu}></Overlay>
       <MainLayoutInner>
-        <div
-          className="bg-secondary rounded-sm
-                        flex items-center justify-center"
-        >
-          <svg
-            className="fill-primary
-                            size-1/4
-                            m-2"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 640 640"
-          >
-            {/*Font Awesome Free v7.0.0 by @fontawesome - https://fontawesome.com
-                    License - https://fontawesome.com/license/free Copyright 2025
-                    Fonticons, Inc.*/}
-            <path d={dataPrivacy} />
-          </svg>
-        </div>
+        <PageBanner path={dataPrivacy}></PageBanner>
 
         <div
           className="bg-secondary rounded-sm
@@ -49,12 +54,10 @@ export default function DataSchutzPage() {
               Datenschutzerklärung
             </h1>
 
-            <Link
+            <LegalPrivacyImportantLink
               to={"/privacy"}
-              className="text-primary text-md font-[Inter] font-bold tracking-wide underline sm:text-lg"
-            >
-              Hier klicken für die deutsche Version
-            </Link>
+              text={"Click here for the English version"}
+            ></LegalPrivacyImportantLink>
           </LegalPrivacySection>
 
           <LegalPrivacySection>
@@ -383,34 +386,11 @@ export default function DataSchutzPage() {
               jederzeit an uns wenden. Das Recht auf Einschränkung der
               Verarbeitung besteht in folgenden Fällen:
             </LegalParagraph>
-            <ul className="list-disc text-white/90 pl-4">
-              <li className="text-white/60 text-md font-[Inter] font-bold tracking-wide leading-relaxed sm:text-lg">
-                Wenn Sie die Richtigkeit Ihrer bei uns gespeicherten
-                personenbezogenen Daten bestreiten, benötigen wir n der Regel
-                Zeit, um dies zu überprüfen. Für die Dauer der Prüfung haben Sie
-                das Recht, die Einschränkung der Verarbeitung Ihrer
-                personenbezogenen Daten zu verlangen.
-              </li>
-              <li className="text-white/60 text-md font-[Inter] font-bold tracking-wide leading-relaxed sm:text-lg">
-                Wenn die Verarbeitung Ihrer personenbezogenen Daten unrechtmäßig
-                geschah/geschieht, können Sie statt der Löschung die
-                Einschränkung der Datenverarbeitung verlangen.
-              </li>
-              <li className="text-white/60 text-md font-[Inter] font-bold tracking-wide leading-relaxed sm:text-lg">
-                Wenn wir Ihre personenbezogenen Daten nicht mehr benötigen, Sie
-                sie jedoch zur Ausübung, Verteidigung oder Geltendmachung von
-                Rechtsansprüchen benötigen, haben Sie das Recht, statt der
-                Löschung die Einschränkung der Verarbeitung Ihrer
-                personenbezogenen Daten zu verlangen.
-              </li>
-              <li className="text-white/60 text-md font-[Inter] font-bold tracking-wide leading-relaxed sm:text-lg">
-                Wenn Sie einen Widerspruch nach Art. 21 Abs. 1 DSGVO eingelegt
-                haben, muss eine Abwägung zwischen Ihren und unseren Interessen
-                vorgenommen werden. Solange noch nicht feststeht, wessen
-                Interessen überwiegen, haben Sie das Recht, die Einschränkung
-                der Verarbeitung Ihrer personenbezogenen Daten zu verlangen
-              </li>
-            </ul>
+
+            <LegalPrivacyList
+              items={einschränkungVerarbeitung}
+            ></LegalPrivacyList>
+
             <LegalParagraph>
               Wenn Sie die Verarbeitung Ihrer personenbezogenen Daten
               eingeschränkt haben, dürfen diese Daten – von ihrer Speicherung
@@ -454,26 +434,7 @@ export default function DataSchutzPage() {
               automatisch an uns übermittelt. Dies sind:
             </LegalParagraph>
 
-            <ul className="list-disc text-white/90 pl-4">
-              <li className="text-white/60 text-md font-[Inter] font-bold tracking-wide leading-relaxed sm:text-lg">
-                Browsertyp und Browserverion
-              </li>
-              <li className="text-white/60 text-md font-[Inter] font-bold tracking-wide leading-relaxed sm:text-lg">
-                verwendetes Betriebssystem
-              </li>
-              <li className="text-white/60 text-md font-[Inter] font-bold tracking-wide leading-relaxed sm:text-lg">
-                Referrer URL
-              </li>
-              <li className="text-white/60 text-md font-[Inter] font-bold tracking-wide leading-relaxed sm:text-lg">
-                Hostname des zugreifenden Rechners
-              </li>
-              <li className="text-white/60 text-md font-[Inter] font-bold tracking-wide leading-relaxed sm:text-lg">
-                Uhrzeit der Serveranfrage
-              </li>
-              <li className="text-white/60 text-md font-[Inter] font-bold tracking-wide leading-relaxed sm:text-lg">
-                IP-Adresse
-              </li>
-            </ul>
+            <LegalPrivacyList items={serverInfoDeutsch}></LegalPrivacyList>
 
             <LegalParagraph>
               Eine Zusammenführung dieser Daten mit anderen Datenquellen wird
@@ -522,34 +483,17 @@ export default function DataSchutzPage() {
           </LegalPrivacySection>
 
           <LegalParagraph>
-            <span>Quelle:</span>{" "}
-            <Link
+            <div>Quelle:</div>
+
+            <LegalPrivacyImportantLink
               to={"https://www.e-recht24.de/"}
-              className="text-primary text-md font-[Inter] font-bold tracking-wide underline sm:text-lg"
-            >
-              e-recht24.de
-            </Link>
+              text={"https://www.e-recht24.de"}
+            ></LegalPrivacyImportantLink>
           </LegalParagraph>
         </div>
 
         <Footer></Footer>
       </MainLayoutInner>
     </MainLayout>
-  );
-}
-
-function LegalPrivacySectionSubHeadLine({ children }) {
-  return (
-    <h3 className="text-white/90 text-lg font-[Inter] font-semibold tracking-wide sm:text-xl">
-      {children}
-    </h3>
-  );
-}
-
-function LegalPrivacySectionSubSubHeadLine({ children }) {
-  return (
-    <h3 className="text-white/90 text font-[Inter] font-semibold tracking-wide sm:text-md">
-      {children}
-    </h3>
   );
 }

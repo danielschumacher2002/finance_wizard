@@ -10,9 +10,31 @@ import { Link } from "react-router-dom";
 import { LegalParagraph } from "../components/LegalParagraph";
 import LegalPrivacySectionHeadLine from "../components/LegalPrivacySectionHeadLine";
 import { LegalPrivacySection } from "../components/LegalPrivacySection";
+import { LegalPrivacySectionSubHeadLine } from "../components/LegalPrivacySectionSubHeadLine";
+import { LegalPrivacySectionSubSubHeadLine } from "../components/LegalPrivacySectionSubSubHeadLine";
+import PageBanner from "../components/PageBanner";
+import LegalPrivacyImportantLink from "../components/LegalPrivacyImportantLink";
+import LegalPrivacyList from "../components/LegalPrivacyList";
 
 export default function DataPrivacy() {
   const [menuOpen, toggleSideMenu] = useSideMenu();
+
+  const rights = [
+    "Right to withdraw consent (Art. 7 GDPR)",
+    "Right to object to processing (Art. 21 GDPR), including to direct marketing",
+    "Right to lodge a complaint with a supervisory authority (Art. 77 GDPR)",
+    "Right to data portability (Art. 20 GDPR)",
+    "Right of access, rectification, erasure, and restriction (Arts. 15–18 GDPR)",
+  ];
+
+  const serverInfo = [
+    "Browser type and version",
+    "Operating system used",
+    "Referrer URL",
+    "Hostname of the accessing computer",
+    "Time of the server request",
+    "IP address",
+  ];
 
   return (
     <MainLayout>
@@ -21,23 +43,7 @@ export default function DataPrivacy() {
       <SideMenu isOpen={menuOpen}></SideMenu>
       <Overlay isActive={menuOpen} toggleFunc={toggleSideMenu}></Overlay>
       <MainLayoutInner>
-        <div
-          className="bg-secondary rounded-sm
-                        flex items-center justify-center"
-        >
-          <svg
-            className="fill-primary
-                            size-1/4
-                            m-2"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 640 640"
-          >
-            {/*Font Awesome Free v7.0.0 by @fontawesome - https://fontawesome.com
-                    License - https://fontawesome.com/license/free Copyright 2025
-                    Fonticons, Inc.*/}
-            <path d={dataPrivacy} />
-          </svg>
-        </div>
+        <PageBanner path={dataPrivacy}></PageBanner>
 
         <div
           className="bg-secondary rounded-sm
@@ -49,12 +55,10 @@ export default function DataPrivacy() {
               Privacy Policy
             </h1>
 
-            <Link
+            <LegalPrivacyImportantLink
               to={"/datenschutz"}
-              className="text-primary text-md font-[Inter] font-bold tracking-wide underline sm:text-lg"
-            >
-              Hier klicken für die deutsche Version
-            </Link>
+              text={"Hier klicken für die deutsche Version"}
+            ></LegalPrivacyImportantLink>
           </LegalPrivacySection>
 
           <LegalPrivacySection>
@@ -286,26 +290,7 @@ export default function DataPrivacy() {
               Your rights
             </LegalPrivacySectionSubHeadLine>
 
-            <ul className="list-disc text-white/90 pl-4">
-              <li className="text-white/60 text-md font-[Inter] font-bold tracking-wide leading-relaxed sm:text-lg">
-                Right to withdraw consent (Art. 7 GDPR)
-              </li>
-              <li className="text-white/60 text-md font-[Inter] font-bold tracking-wide leading-relaxed sm:text-lg">
-                Right to object to processing (Art. 21 GDPR), including to
-                direct marketing
-              </li>
-              <li className="text-white/60 text-md font-[Inter] font-bold tracking-wide leading-relaxed sm:text-lg">
-                Right to lodge a complaint with a supervisory authority (Art. 77
-                GDPR)
-              </li>
-              <li className="text-white/60 text-md font-[Inter] font-bold tracking-wide leading-relaxed sm:text-lg">
-                Right to data portability (Art. 20 GDPR)
-              </li>
-              <li className="text-white/60 text-md font-[Inter] font-bold tracking-wide leading-relaxed sm:text-lg">
-                Right of access, rectification, erasure, and restriction (Arts.
-                15–18 GDPR)
-              </li>
-            </ul>
+            <LegalPrivacyList items={rights}></LegalPrivacyList>
 
             <LegalPrivacySectionSubHeadLine>
               SSL/TLS encryption
@@ -336,26 +321,7 @@ export default function DataPrivacy() {
               automatically transmits. These include:
             </LegalParagraph>
 
-            <ul className="list-disc text-white/90 pl-4">
-              <li className="text-white/60 text-md font-[Inter] font-bold tracking-wide leading-relaxed sm:text-lg">
-                Browser type and version
-              </li>
-              <li className="text-white/60 text-md font-[Inter] font-bold tracking-wide leading-relaxed sm:text-lg">
-                Operating system used
-              </li>
-              <li className="text-white/60 text-md font-[Inter] font-bold tracking-wide leading-relaxed sm:text-lg">
-                Referrer URL
-              </li>
-              <li className="text-white/60 text-md font-[Inter] font-bold tracking-wide leading-relaxed sm:text-lg">
-                Hostname of the accessing computer
-              </li>
-              <li className="text-white/60 text-md font-[Inter] font-bold tracking-wide leading-relaxed sm:text-lg">
-                Time of the server request
-              </li>
-              <li className="text-white/60 text-md font-[Inter] font-bold tracking-wide leading-relaxed sm:text-lg">
-                IP adress
-              </li>
-            </ul>
+            <LegalPrivacyList items={serverInfo}></LegalPrivacyList>
 
             <LegalParagraph>
               These data are not merged with other data sources. Collection is
@@ -394,34 +360,17 @@ export default function DataPrivacy() {
           </LegalPrivacySection>
 
           <LegalParagraph>
-            <span>Source: Adapted from</span>{" "}
-            <Link
+            <div>Source:</div>
+
+            <LegalPrivacyImportantLink
               to={"https://www.e-recht24.de/"}
-              className="text-primary text-md font-[Inter] font-bold tracking-wide underline sm:text-lg"
-            >
-              e-recht24.de
-            </Link>
+              text={"https://www.e-recht24.de"}
+            ></LegalPrivacyImportantLink>
           </LegalParagraph>
         </div>
 
         <Footer></Footer>
       </MainLayoutInner>
     </MainLayout>
-  );
-}
-
-function LegalPrivacySectionSubHeadLine({ children }) {
-  return (
-    <h3 className="text-white/90 text-lg font-[Inter] font-semibold tracking-wide sm:text-xl">
-      {children}
-    </h3>
-  );
-}
-
-function LegalPrivacySectionSubSubHeadLine({ children }) {
-  return (
-    <h3 className="text-white/90 text font-[Inter] font-semibold tracking-wide sm:text-md">
-      {children}
-    </h3>
   );
 }
