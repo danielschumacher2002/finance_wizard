@@ -4,7 +4,8 @@ import { Link } from "react-router-dom";
 export function ToolCard({ path, color, title, desc, link }) {
   return (
     /* ToolCards nehmen volle breite grid parent muss regeln*/
-    <Link to={link}
+    <Link
+      to={link}
       className="flex gap-2 sm:gap-3
                  pl-8 py-2
                  h-25 sm:h-30 lg:h-35

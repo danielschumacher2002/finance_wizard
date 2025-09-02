@@ -16,13 +16,14 @@ export let dashboardData = [
     desc: "Profits and Future Value ",
     path: investmentIconPath,
     color: "#a18f6b",
-    link: "/compoundInterest"
+    link: "/compoundInterest",
   },
   {
     title: "Inflation",
     desc: "Loss and Buying Power",
     path: inflationIconPath,
     color: "#a18f6b",
+    link: "/inflation",
   },
   {
     title: "Credit",

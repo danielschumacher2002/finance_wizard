@@ -6,20 +6,21 @@ import PageBanner from "../components/PageBanner";
 import MainLayout from "../layouts/MainLayout";
 import MainLayoutInner from "../layouts/MainLayoutInner";
 import useSideMenu from "../hooks/SideMenuHook";
-import { investmentIconPath } from "../assets/data/iconPath";
+import { inflationIconPath } from "../assets/data/iconPath";
 import { useState } from "react";
-import Field from "../components/Field";
 import Input from "../components/Input";
 import Select from "../components/Select";
+import Field from "../components/Field";
 
-export default function CompoundInterestPage() {
+export default function InflationPage() {
   const [menuOpen, toggleSideMenu] = useSideMenu();
+
   const [form, setForm] = useState({
-    startCapital: "",
-    monthlySavings: "",
-    years: "",
-    annualRate: "",
-    compounding: "monthly",
+    amount: "",
+    fromYear: "",
+    toYear: "",
+    inflationRate: "",
+    compounding: "annually",
   });
 
   const onChange = (e) => {
@@ -29,11 +30,11 @@ export default function CompoundInterestPage() {
 
   const reset = () =>
     setForm({
-      startCapital: "",
-      monthlySavings: "",
-      years: "",
-      annualRate: "",
-      compounding: "monthly",
+      amount: "",
+      fromYear: "",
+      toYear: "",
+      inflationRate: "",
+      compounding: "annually",
     });
 
   return (
@@ -43,81 +44,83 @@ export default function CompoundInterestPage() {
       <Overlay isActive={menuOpen} toggleFunc={toggleSideMenu} />
 
       <MainLayoutInner>
-        <PageBanner path={investmentIconPath} />
+        <PageBanner path={inflationIconPath} />
 
         {/* Card */}
         <div className="bg-secondary rounded-xl shadow-lg p-4 sm:p-6 lg:p-8">
           <div className="flex items-center gap-2 mb-4 sm:mb-6">
             <h1 className="text-primary text-2xl sm:text-3xl font-[Inter] font-extrabold mx-auto my-3">
-              Compound Interest
+              Inflation Calculator
             </h1>
           </div>
 
-          <form className="grid grid-cols-1 gap-6">
+          <form
+            className="grid grid-cols-1 gap-6"
+            onSubmit={(e) => e.preventDefault()}
+          >
             <Field label="Start Capital">
               <Input
-                placeholder="5.000"
-                name="startCapital"
-                value={form.startCapital}
+                placeholder="1.000,00"
+                name="amount"
+                value={form.amount}
                 onChange={onChange}
                 type="text"
               />
             </Field>
 
-            <Field label="Monthly savings">
+            <Field label="Startyear">
               <Input
-                placeholder="100,00"
-                name="monthlySavings"
-                value={form.monthlySavings}
+                placeholder="2010"
+                name="fromYear"
+                value={form.fromYear}
                 onChange={onChange}
                 type="text"
               />
             </Field>
 
-            <Field label="Investment Period">
+            <Field label="Endyear">
               <Input
-                placeholder="10"
-                name="years"
-                value={form.years}
+                placeholder="2025"
+                name="toYear"
+                value={form.toYear}
                 onChange={onChange}
                 type="text"
               />
             </Field>
 
-            <Field label="Annual Rate">
+            <Field label="Inflationrate">
               <Input
-                placeholder="5,00"
-                name="annualRate"
-                value={form.annualRate}
+                placeholder="2,00"
+                name="inflationRate"
+                value={form.inflationRate}
                 onChange={onChange}
                 type="text"
               />
             </Field>
 
-            <Field label="Distribution interval">
+            <Field label="Verzinsungsintervall">
               <Select
                 name="compounding"
                 value={form.compounding}
                 onChange={onChange}
               >
                 <option value="annually">annually</option>
-                <option value="semi-annually">semi-annually</option>
-                <option value="quarterly">quarterly</option>
                 <option value="monthly">monthly</option>
               </Select>
             </Field>
 
-            <div className="pt-2">
+            <div className="pt-2 grid gap-2">
               <button
                 type="button"
                 className="w-full rounded-lg bg-primary text-black font-semibold py-2.5 sm:py-3 hover:opacity-90 transition"
+                // onClick spaerter Berechnung einhaengen
               >
                 Calculate
               </button>
               <button
                 type="button"
                 onClick={reset}
-                className="mt-2 w-full rounded-lg bg-white/10 text-white/90 border border-white/10 py-2.5 sm:py-3 hover:bg-white/15 transition"
+                className="w-full rounded-lg bg-white/10 text-white/90 border border-white/10 py-2.5 sm:py-3 hover:bg-white/15 transition"
               >
                 Reset
               </button>
@@ -126,11 +129,13 @@ export default function CompoundInterestPage() {
         </div>
 
         <div className="bg-secondary rounded-xl shadow-lg p-4 sm:p-6 lg:p-8">
-          <h4 className="text-primary/90 text-xl font-medium">Results...</h4>
+          <h4 className="text-primary/90 text-xl font-medium mb-1">
+            Results...
+          </h4>
         </div>
 
         <div className="bg-secondary rounded-xl shadow-lg p-4 sm:p-6 lg:p-8">
-          <h4 className="text-primary/90 text-xl font-medium">Graph...</h4>
+          <h4 className="text-primary/90 text-xl font-medium mb-1">Graph...</h4>
         </div>
 
         <Footer />

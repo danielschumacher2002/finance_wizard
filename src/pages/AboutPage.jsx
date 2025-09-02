@@ -23,14 +23,13 @@ export default function AboutPage() {
       <MainLayoutInner>
         <PageBanner path={aboutQuestionPath} />
 
-
         <AboutSection className="bg-secondary rounded-md p-6 sm:p-10 flex flex-col gap-4 shadow-lg">
           <h1 className="text-primary text-3xl sm:text-4xl font-[Inter] font-extrabold">
             About Me
           </h1>
           <p className="text-white/80 leading-relaxed text-lg">
-            Hi, I’m Daniel, a very passionate fullstack developer. I try to build clean,
-            modern and intuitive digital experiences.
+            Hi, I’m Daniel, a very passionate fullstack developer. I try to
+            build clean, modern and intuitive digital experiences.
           </p>
         </AboutSection>
 
@@ -82,9 +81,6 @@ export default function AboutPage() {
 
         <Footer />
       </MainLayoutInner>
-
-      
     </MainLayout>
   );
 }
-

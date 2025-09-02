@@ -9,6 +9,7 @@ import DataPrivacy from "./pages/DataPricacyPage";
 import DataSchutzPage from "./pages/DatenschutzSeite";
 import AboutPage from "./pages/AboutPage";
 import CompoundInterstPage from "./pages/CompoundInterestPage";
+import InflationPage from "./pages/InflationPage";
 
 const router = createBrowserRouter(
   [
@@ -40,7 +41,12 @@ const router = createBrowserRouter(
       path: "/compoundInterest",
       element: <CompoundInterstPage></CompoundInterstPage>,
     },
-        {
+    {
+      path: "/inflation",
+      element: <InflationPage></InflationPage>,
+    },
+
+    {
       path: "/about",
       element: <AboutPage></AboutPage>,
     },
