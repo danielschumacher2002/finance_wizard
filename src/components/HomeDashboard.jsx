@@ -17,6 +17,7 @@ export default function HomeDashboard() {
               color={data.color}
               title={data.title}
               desc={data.desc}
+              link={data.link}
             />
           );
         })}

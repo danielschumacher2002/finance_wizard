@@ -7,6 +7,8 @@ import LegalPage from "./pages/LegalPage";
 import ImpressumPage from "./pages/ImpressumPage";
 import DataPrivacy from "./pages/DataPricacyPage";
 import DataSchutzPage from "./pages/DatenschutzSeite";
+import AboutPage from "./pages/AboutPage";
+import CompoundInterstPage from "./pages/CompoundInterestPage";
 
 const router = createBrowserRouter(
   [
@@ -33,6 +35,14 @@ const router = createBrowserRouter(
     {
       path: "/datenschutz",
       element: <DataSchutzPage></DataSchutzPage>,
+    },
+    {
+      path: "/compoundInterest",
+      element: <CompoundInterstPage></CompoundInterstPage>,
+    },
+        {
+      path: "/about",
+      element: <AboutPage></AboutPage>,
     },
   ],
   {

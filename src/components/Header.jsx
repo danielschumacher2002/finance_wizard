@@ -27,7 +27,7 @@ export default function Header({ toggleSideMenu }) {
           {/* NavBar soll sich nicht selber positionieren */}
           <div className="hidden lg:block">
             <NavBar>
-              <NavItem text={"Coming Soon"} to={"/"} disabled={false}></NavItem>
+              <NavItem text={"About"} to={"/about"} disabled={false}></NavItem>
               <NavItem text={"Feedback"} to={""} disabled={true}></NavItem>
             </NavBar>
           </div>

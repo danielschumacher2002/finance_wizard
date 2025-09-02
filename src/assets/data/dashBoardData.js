@@ -16,6 +16,7 @@ export let dashboardData = [
     desc: "Profits and Future Value ",
     path: investmentIconPath,
     color: "#a18f6b",
+    link: "/compoundInterest"
   },
   {
     title: "Inflation",
